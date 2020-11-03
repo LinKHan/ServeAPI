@@ -1,5 +1,6 @@
 package com.ak.restAPIBoot.controller;
 
+import auditing.InputRequest;
 import com.ak.restAPIBoot.entity.Product;
 import com.ak.restAPIBoot.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class ProductController {
     @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product){
         return productService.saveProduct(product);
+    }
+
+    @PostMapping("/saveProduct")
+    public Product saveProduct(@RequestBody InputRequest<Product> request){
+        return productService.saveProduct(request);
     }
 
     @PostMapping("/addProducts")
@@ -39,8 +45,8 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public Product updateProduct(@RequestBody Product product){
-        return productService.updateProduct(product);
+    public Product updateProduct(@RequestBody InputRequest<Product> request){
+        return productService.updateProduct(request);
     }
 
     @DeleteMapping("/delete/{id}")
