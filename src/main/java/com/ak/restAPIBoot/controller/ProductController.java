@@ -9,37 +9,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/product")
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
-    @PostMapping("/addProduct")
+    @PostMapping("/add")
     public Product addProduct(@RequestBody Product product){
         return productService.saveProduct(product);
     }
 
-    @PostMapping("/saveProduct")
+    @PostMapping("/save")
     public Product saveProduct(@RequestBody InputRequest<Product> request){
         return productService.saveProduct(request);
     }
 
-    @PostMapping("/addProducts")
+    @PostMapping("/addLists")
     public List<Product> addProducts(@RequestBody List<Product> products){
         return productService.saveProducts(products);
     }
 
-    @GetMapping("/productById/{id}")
+    @GetMapping("/{id}")
     public Product findProductById(@PathVariable int id){
         return productService.getSingleProductById(id);
     }
 
-    @GetMapping("/productByName/{name}")
+    @GetMapping("/{name}")
     public Product findProductByName(@PathVariable String name){
         return productService.getSingleProductByName(name);
     }
 
-    @GetMapping("/products")
+    @GetMapping("/lists")
     public List<Product> findAllProducts(){
         return productService.getAllProducts();
     }
