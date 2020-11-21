@@ -8,4 +8,3 @@ stage('Build Stage')
     }
 }
 }
-}
