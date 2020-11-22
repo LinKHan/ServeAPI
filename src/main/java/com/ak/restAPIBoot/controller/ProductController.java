@@ -35,8 +35,13 @@ public class ProductController {
         return productService.getSingleProductById(id);
     }
 
-    @GetMapping("/{name}")
-    public Product findProductByName(@PathVariable String name){
+    /**
+     * add name as request param
+     * @param name
+     * @return
+     */
+    @GetMapping()
+    public Product findProductByName(@RequestParam(value = "name") String name){
         return productService.getSingleProductByName(name);
     }
 
